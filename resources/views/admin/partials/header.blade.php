@@ -21,8 +21,8 @@
                         <a class="nav-link" href="javascript:void(0)" role="button" data-bs-toggle="dropdown">
                             <img src="{{ asset('admin/images/profile/17.jpg') }}" width="20" alt="">
                             <div class="header-info">
-                                <span class="text-black"><strong>Peter Parkur</strong></span>
-                                <p class="fs-12 mb-0">Super Admin</p>
+                                <span class="text-black"><strong>{{ Auth::user()->name }}</strong></span>
+                                <p class="fs-12 mb-0">{{ Auth::user()->role->name }}</p>
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
@@ -33,7 +33,7 @@
                                 </svg>
                                 <span class="ms-2">Profile </span>
                             </a>
-                            <a href="page-login.html" class="dropdown-item ai-icon">
+                            <a href="/logout" class="dropdown-item ai-icon">
                                 <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                     <polyline points="16 17 21 12 16 7"></polyline>

@@ -237,25 +237,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-header d-sm-flex d-block pb-0 border-0">
-                            <div class="me-auto pe-3">
-                                <h4 class="text-black fs-20 font-w600">Calories Chart</h4>
-                                <p class="fs-13 mb-0">Lorem ipsum dolor sit amet, consectetur</p>
-                            </div>
-                            <select class="default-select w-auto" aria-label="Default select example">
-                                <option selected>Weekly</option>
-                                <option value="1">Monthly</option>
-                                <option value="2">Daily</option>
-                                <option value="3">Yearly</option>
-                            </select>
-                        </div>
-                        <div class="card-body px-3 pb-0">
-                            <div id="chartTimeline"></div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="col-xl-3 col-xxl-4">
@@ -321,4 +303,18 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+@if(Session::get('login'))
+<script>
+    Swal.fire(
+        "Welcome Back !!"
+        , "You have successfully logged in"
+        , "success"
+    );
+
+</script>
+
+@endif
 @endsection

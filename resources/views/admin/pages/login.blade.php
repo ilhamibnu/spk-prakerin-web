@@ -26,7 +26,8 @@
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
-    <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 </head>
@@ -41,17 +42,35 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="index.html"><img src="{{ asset('admin/images/logo-full.png') }}" alt=""></a>
+                                        {{-- <a href="index.html"><img src="{{ asset('admin/images/logo-full.png') }}" alt=""></a> --}}
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
-                                    <form action="https://gymove.dexignzone.com/xhtml/index.html">
+                                    <form action="/login" method="POST">
+                                        @csrf
+
+                                        @if($errors->any())
+                                        <div class="alert alert-danger alert-dismissible fade show mt-2">
+
+
+
+                                            <?php
+
+                                    $nomer = 1;
+
+                                    ?>
+
+                                            @foreach($errors->all() as $error)
+                                            <li>{{ $nomer++ }}. {{ $error }}</li>
+                                            @endforeach
+                                        </div>
+                                        @endif
                                         <div class="form-group">
                                             <label class="mb-1 form-label"> Email</label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <input type="email" name="email" class="form-control" placeholder="Email">
                                         </div>
                                         <div class="mb-4 position-relative">
                                             <label class="mb-1 form-label">Password</label>
-                                            <input type="password" id="dz-password" class="form-control" value="123456">
+                                            <input type="password" name="password" id="dz-password" class="form-control" placeholder="Password">
                                             <span class="show-pass eye">
 
                                                 <i class="fa fa-eye-slash"></i>
@@ -60,23 +79,21 @@
                                             </span>
                                         </div>
                                         <div class="form-row d-flex justify-content-between mt-4 mb-2">
-                                            <div class="form-group">
+                                            {{-- <div class="form-group">
                                                 <div class="form-check custom-checkbox ms-1">
                                                     <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
                                                     <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
+                                            </div> --}}
+                                            {{-- <div class="form-group">
                                                 <a href="page-forgot-password.html">Forgot Password?</a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary light btn-block">Sign Me In</button>
                                         </div>
                                     </form>
-                                    <div class="new-account mt-3">
-                                        <p>Don't have an account? <a class="text-primary" href="page-register.html">Sign up</a></p>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -92,10 +109,46 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
-    <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins-init/sweetalert.init.js') }}"></script>
     <script src="{{ asset('admin/js/custom.min.js') }}"></script>
     <script src="{{ asset('admin/js/deznav-init.js') }}"></script>
+
 </body>
 
 <!-- Mirrored from gymove.dexignzone.com/xhtml/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 13:39:27 GMT -->
 </html>
+
+@if(Session::get('logout'))
+<script>
+    Swal.fire(
+        "Logout"
+        , "You have been logged out"
+        , "success"
+    );
+
+</script>
+@endif
+
+@if(Session::get('error'))
+<script>
+    Swal.fire(
+        "Error"
+        , "Email or password is incorrect"
+        , "error"
+    );
+
+</script>
+@endif
+
+@if(Session::get('belumlogin'))
+<script>
+    Swal.fire(
+        "Error"
+        , "You must login first"
+        , "error"
+    );
+
+</script>
+@endif

@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.pages.login');
-});
+#Auth
+Route::get('/', [AuthController::class, 'indexlogin']);
+Route::get('/login', [AuthController::class, 'indexlogin']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('IsLogin');
 
-Route::get('/register', function () {
-    return view('admin.pages.register');
-});
-
-Route::get('/dashboard', function () {
-    return view('admin.pages.dashboard');
-});
+#Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('IsLogin');
