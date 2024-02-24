@@ -67,11 +67,45 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                                                 </button>
                                             </div>
-                                            <div class="modal-body">Modal body text goes here.</div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
+                                            <form action="/data-kriteria/{{ $data->id }}" method="post">
+                                                @csrf
+                                                @method('put')
+                                                <div class="modal-body">
+                                                    @csrf
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label>Name</label>
+                                                            <input type="text" value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <label>Bobot</label>
+                                                            <input type="text" name="bobot" value="{{ $data->bobot }}" class="form-control" placeholder="0.1">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Jenis</label>
+                                                        <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                                            <select name="jenis" class="form-control default-select form-control-sm">
+                                                                @if($data->jenis == 'Cost')
+                                                                <option value="Cost" selected>Cost</option>
+                                                                <option value="Benefit">Benefit</option>
+                                                                @else
+                                                                <option value="Cost">Cost</option>
+                                                                <option value="Benefit" selected>Benefit</option>
+                                                                @endif
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -85,10 +119,14 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                                                 </button>
                                             </div>
-                                            <div class="modal-body">Modal body text goes here.</div>
+                                            <div class="modal-body">Anda Yakin Akan Menghapus {{ $data->name }} ?</div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <form action="/data-kriteria/{{ $data->id }}" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-primary">Delete</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -111,14 +149,119 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
-                <div class="modal-body">Modal body text goes here.</div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+                <form action="/data-kriteria" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        @csrf
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" value="" name="name" class="form-control" placeholder="Test">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Bobot</label>
+                                <input type="text" name="bobot" value="" class="form-control" placeholder="0.1">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Jenis</label>
+                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                <select name="jenis" class="form-control default-select form-control-sm">
+                                    <option selected disabled>Pilih Jenis</option>
+                                    <option value="Cost">Cost</option>
+                                    <option value="Benefit">Benefit</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <!-- add -->
 </div>
+@endsection
+
+@section('script')
+
+@if(Session::get('store'))
+<script>
+    toastr.success("Data Berhasil Ditambahkan", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
+@if(Session::get('update'))
+<script>
+    toastr.success("Data Berhasil Diubah", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
+@if(Session::get('destroy'))
+<script>
+    toastr.success("Data Berhasil Dihapus", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
 @endsection

@@ -25,6 +25,7 @@ class KriteriaController extends Controller
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
             'bobot.required' => 'Bobot harus diisi!',
+            'bobot.regex' => 'Bobot harus diisi dengan angka!',
             'jenis.required' => 'Jenis Kriteria harus diisi!'
         ]);
 
