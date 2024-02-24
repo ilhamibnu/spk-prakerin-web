@@ -79,7 +79,7 @@
                                                         <div class="form-group">
                                                             <label>Jenis</label>
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="jenis" class="form-control default-select form-control-sm">
+                                                                <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->nilaiKepentingan->id }}">{{ $data->nilaiKepentingan->name }}</option>
                                                                     @foreach ($nilai as $nilai)
                                                                     <option value="{{ $nilai->id }}">{{ $nilai->bobot }}</option>
@@ -153,7 +153,7 @@
                             <div class="form-group">
                                 <label>Jenis</label>
                                 <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="jenis" class="form-control default-select form-control-sm">
+                                    <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
                                         <option selected disabled>Pilih Bobot</option>
                                         @foreach ($nilai as $nilai)
                                         <option value="{{ $nilai->id }}">{{ $nilai->bobot }}</option>

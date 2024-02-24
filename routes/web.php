@@ -7,8 +7,8 @@ use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NilaiKepentinganController;
 use App\Http\Controllers\SubKriteriaController;
-
-
+use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\MitraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +78,15 @@ Route::get('/data-nilai-semester', [SubKriteriaController::class, 'indexnilaisem
 Route::post('/data-nilai-semester', [SubKriteriaController::class, 'storenilaisemester'])->middleware('IsLogin');
 Route::put('/data-nilai-semester/{id}', [SubKriteriaController::class, 'updatenilaisemester'])->middleware('IsLogin');
 Route::delete('/data-nilai-semester/{id}', [SubKriteriaController::class, 'destroynilaisemester'])->middleware('IsLogin');
+
+#Siswa
+Route::get('/data-siswa', [SiswaController::class, 'index'])->middleware('IsLogin');
+Route::post('/data-siswa', [SiswaController::class, 'store'])->middleware('IsLogin');
+Route::put('/data-siswa/{id}', [SiswaController::class, 'update'])->middleware('IsLogin');
+Route::delete('/data-siswa/{id}', [SiswaController::class, 'destroy'])->middleware('IsLogin');
+
+#Mitra
+Route::get('/data-mitra', [MitraController::class, 'index'])->middleware('IsLogin');
+Route::post('/data-mitra', [MitraController::class, 'store'])->middleware('IsLogin');
+Route::put('/data-mitra/{id}', [MitraController::class, 'update'])->middleware('IsLogin');
+Route::delete('/data-mitra/{id}', [MitraController::class, 'destroy'])->middleware('IsLogin');
