@@ -143,7 +143,7 @@
 
     @if(Session::get('logout'))
     <script>
-        toastr.warning("Berhasil Logout", "Info", {
+        toastr.success("Berhasil Logout", "Info", {
             timeOut: 5000
             , closeButton: !0
             , debug: !1

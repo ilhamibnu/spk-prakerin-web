@@ -27,6 +27,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}">
     <link href="{{ asset('admin/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/new/dataTables.bootstrap4.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/new/datatablesbutton.css') }}">
     <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
     <!-- Toastr -->
@@ -71,7 +73,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Update Profil</h5>
+                            <h5 class="modal-title">Profil</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal">
                             </button>
                         </div>
@@ -136,12 +138,33 @@
     <!-- All init script -->
     <script src="{{ asset('admin/js/plugins-init/toastr-init.js') }}"></script>
 
+
+
+    {{-- <script src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
+    <script src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/js/tables-datatables-basic.js"></script> --}}
+
+
     <!-- Dashboard 1 -->
     <script src="{{ asset('admin/js/dashboard/dashboard-1.js') }}"></script>
     <script src="{{ asset('admin/js/custom.min.js') }}"></script>
     <script src="{{ asset('admin/js/deznav-init.js') }}"></script>
+
+    {{-- <script src="{{ asset('admin/new/datatable-basic.init.js') }}"></script>
+    <script src="{{ asset('admin/new/jquery.dataTables.js')}}"></script> --}}
+
+
     <script src="{{ asset('admin/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugins-init/datatables.init.js') }}"></script>
+
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+
     <script>
         function carouselReview() {
             /*  testimonial one function by = owl.carousel.js */

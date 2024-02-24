@@ -33,7 +33,7 @@
                     </div>
                     @endif
                     <div class="table-responsive">
-                        <table id="example3" class="display min-w850">
+                        <table id="test" class="display min-w850">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -49,7 +49,7 @@
                             <tbody>
                                 @foreach ($mitra as $data )
                                 <tr>
-                                    <th>{{ $loop->iteration }}</th>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->ftth->name }}</td>
                                     <td>{{ $data->cpe->name }}</td>
@@ -423,5 +423,79 @@
 
 </script>
 @endif
+
+<script>
+    $('#test').DataTable({
+        autoWidth: true,
+        // "lengthMenu": [
+        //     [16, 32, 64, -1],
+        //     [16, 32, 64, "All"]
+        // ]
+        dom: 'Bfrtip',
+
+
+        lengthMenu: [
+            [10, 25, 50, -1]
+            , ['10 rows', '25 rows', '50 rows', 'Show all']
+        ],
+
+        buttons: [{
+                extend: 'colvis'
+                , className: 'btn btn-primary btn-sm'
+                , text: 'Column Visibility',
+                // columns: ':gt(0)'
+
+
+            },
+
+            {
+
+                extend: 'pageLength'
+                , className: 'btn btn-primary btn-sm'
+                , text: 'Page Length',
+                // columns: ':gt(0)'
+            },
+
+
+            // 'colvis', 'pageLength',
+
+            {
+                extend: 'excel'
+                , className: 'btn btn-primary btn-sm'
+                , exportOptions: {
+                    columns: [0, ':visible']
+                }
+            },
+
+            // {
+            //     extend: 'csv',
+            //     className: 'btn btn-primary btn-sm',
+            //     exportOptions: {
+            //         columns: [0, ':visible']
+            //     }
+            // },
+            {
+                extend: 'pdf'
+                , className: 'btn btn-primary btn-sm'
+                , exportOptions: {
+                    columns: [0, ':visible']
+                }
+            },
+
+            {
+                extend: 'print'
+                , className: 'btn btn-primary btn-sm'
+                , exportOptions: {
+                    columns: [0, ':visible']
+                }
+            },
+
+            // 'pageLength', 'colvis',
+            // 'copy', 'csv', 'excel', 'print'
+
+        ]
+    , });
+
+</script>
 
 @endsection
