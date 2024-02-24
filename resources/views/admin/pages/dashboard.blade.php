@@ -304,3 +304,77 @@
     </div>
 </div>
 @endsection
+
+@section('script')
+@if(Session::get('login'))
+<script>
+    toastr.success("Login Berhasil", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
+@if(Session::get('updateprofil'))
+<script>
+    toastr.success("Profil Berhasil Diubah", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
+@if(Session::get('error'))
+<script>
+    toastr.error("Profil Gagal Diubah", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+@endsection

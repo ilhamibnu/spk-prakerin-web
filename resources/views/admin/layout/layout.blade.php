@@ -66,6 +66,53 @@
 
         <div class="content-body default-height">
             @yield('content')
+            <!-- update profil -->
+            <div class="modal fade" id="UpdateProfil">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Update Profil</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                            </button>
+                        </div>
+                        <form action="/update-profil" method="post">
+                            @csrf
+                            <div class="modal-body">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" value="{{ Auth::user()->name }}" name="name" class="form-control" placeholder="John">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" placeholder="John@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control" placeholder="***">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label>Repassword</label>
+                                        <input type="password" name="repassword" class="form-control" placeholder="***">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- update profil -->
         </div>
 
         @include('admin.partials.footer')

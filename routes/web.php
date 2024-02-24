@@ -24,6 +24,7 @@ Route::get('/', [AuthController::class, 'indexlogin']);
 Route::get('/login', [AuthController::class, 'indexlogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('IsLogin');
+Route::post('/update-profil', [AuthController::class, 'updateprofil'])->middleware('IsLogin');
 
 #Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('IsLogin');
@@ -35,7 +36,7 @@ Route::put('/data-kriteria/{id}', [KriteriaController::class, 'update'])->middle
 Route::delete('/data-kriteria/{id}', [KriteriaController::class, 'destroy'])->middleware('IsLogin');
 
 #User
-Route::get('/data-user', [UserController::class, 'index'])->middleware('IsLogin');
-Route::post('/data-user', [UserController::class, 'store'])->middleware('IsLogin');
-Route::put('/data-user/{id}', [UserController::class, 'update'])->middleware('IsLogin');
-Route::delete('/data-user/{id}', [UserController::class, 'destroy'])->middleware('IsLogin');
+Route::get('/data-user', [UserController::class, 'index'])->middleware('IsLogin', 'IsAdmin');
+Route::post('/data-user', [UserController::class, 'store'])->middleware('IsLogin', 'IsAdmin');
+Route::put('/data-user/{id}', [UserController::class, 'update'])->middleware('IsLogin', 'IsAdmin');
+Route::delete('/data-user/{id}', [UserController::class, 'destroy'])->middleware('IsLogin', 'IsAdmin');

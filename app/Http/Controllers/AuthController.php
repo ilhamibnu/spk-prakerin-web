@@ -32,6 +32,22 @@ class AuthController extends Controller
         return redirect('/login')->with('error', 'Username atau Password salah!');
     }
 
+    public function updateprofil(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password != null) {
+            if ($request->password != $request->repassword) {
+                return redirect('/dashboard')->with('error', 'Password tidak sama!');
+            }
+            $user->password = bcrypt($request->password);
+        }
+        $user->update();
+
+        return redirect('/dashboard')->with('updateprofil', 'Profil berhasil diupdate!');
+    }
+
     public function logout()
     {
         auth()->logout();
