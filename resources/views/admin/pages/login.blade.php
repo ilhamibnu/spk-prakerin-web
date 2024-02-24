@@ -5,7 +5,7 @@
 <!-- Mirrored from gymove.dexignzone.com/xhtml/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 13:39:26 GMT -->
 <head>
     <!-- Title -->
-    <title>Gymove - Login</title>
+    <title>Prakerin - Login</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -25,7 +25,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/prakerin1.png') }}">
     <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('admin/vendor/toastr/css/toastr.min.css') }}">
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
@@ -42,7 +42,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <a href="/"><img src="{{ asset('admin/images/logo-full.png') }}" alt=""></a>
+                                        <a href="/"><img src="{{ asset('admin/images/full-logo.png') }}" alt=""></a>
                                     </div>
                                     <h4 class="text-center mb-4">Sign in your account</h4>
                                     <form action="/login" method="POST">

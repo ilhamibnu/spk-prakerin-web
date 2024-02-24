@@ -4,7 +4,7 @@
 <!-- Mirrored from gymove.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 13:34:38 GMT -->
 <head>
     <!-- Title -->
-    <title>Gymove - @yield('title')</title>
+    <title>Prakerin - @yield('title')</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -24,7 +24,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/prakerin1.png') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}">
     <link href="{{ asset('admin/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('admin/new/dataTables.bootstrap4.css') }}">
@@ -50,9 +50,9 @@
 
         <div class="nav-header">
             <a href="/dashboard" class="brand-logo" aria-label="Gymove">
-                <img class="logo-abbr" src="{{ asset('admin/images/logo.png') }}" alt="">
-                <img class="logo-compact" src="{{ asset('admin/images/logo-text.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('admin/images/logo-text.png') }}" alt="">
+                <img class="logo-abbr" src="{{ asset('admin/images/prakerin1.png') }}" alt="">
+                <img class="logo-compact" src="{{ asset('admin/images/text-2.png') }}" alt="">
+                <img class="brand-title" src="{{ asset('admin/images/text-2.png') }}" alt="">
             </a>
 
             <div class="nav-control">
