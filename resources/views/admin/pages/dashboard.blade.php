@@ -304,17 +304,3 @@
     </div>
 </div>
 @endsection
-
-@section('script')
-@if(Session::get('login'))
-<script>
-    Swal.fire(
-        "Welcome Back !!"
-        , "You have successfully logged in"
-        , "success"
-    );
-
-</script>
-
-@endif
-@endsection

@@ -26,8 +26,7 @@
 
     <!-- Favicon icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
-    {{-- <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 </head>
@@ -109,9 +108,7 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
-    {{-- <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script> --}}
-    <script src="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins-init/sweetalert.init.js') }}"></script>
+    <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('admin/js/custom.min.js') }}"></script>
     <script src="{{ asset('admin/js/deznav-init.js') }}"></script>
 
@@ -119,36 +116,3 @@
 
 <!-- Mirrored from gymove.dexignzone.com/xhtml/page-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 23 Feb 2024 13:39:27 GMT -->
 </html>
-
-@if(Session::get('logout'))
-<script>
-    Swal.fire(
-        "Logout"
-        , "You have been logged out"
-        , "success"
-    );
-
-</script>
-@endif
-
-@if(Session::get('error'))
-<script>
-    Swal.fire(
-        "Error"
-        , "Email or password is incorrect"
-        , "error"
-    );
-
-</script>
-@endif
-
-@if(Session::get('belumlogin'))
-<script>
-    Swal.fire(
-        "Error"
-        , "You must login first"
-        , "error"
-    );
-
-</script>
-@endif

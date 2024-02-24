@@ -26,10 +26,12 @@
     <!-- Favicon icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendor/chartist/css/chartist.min.css') }}">
-    <link href="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('admin/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/vendor/owl-carousel/owl.carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('admin/vendor/toastr/css/toastr.min.css') }}">
+    <link rel="stylesheet" href=" {{ asset('admin/css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 </head>
 <body>
@@ -71,13 +73,10 @@
     </div>
 
     <!-- Required vendors -->
-
     <script src="{{ asset('admin/vendor/global/global.min.js') }}"></script>
-    {{-- <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/vendor/bootstrap-select/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/chart-js/chart.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/owl-carousel/owl.carousel.js') }}"></script>
-    <script src="{{ asset('admin/vendor/sweetalert2/sweetalert2.min.js') }}"></script>
-    <script src="{{ asset('admin/js/plugins-init/sweetalert.init.js') }}"></script>
 
     <!-- Chart piety plugin files -->
     <script src="{{ asset('admin/vendor/peity/jquery.peity.min.js') }}"></script>
@@ -85,11 +84,17 @@
     <!-- Apex Chart -->
     <script src="{{ asset('admin/vendor/apexchart/apexchart.js') }}"></script>
 
+    <!-- Toastr -->
+    <script src="{{ asset('admin/vendor/toastr/js/toastr.min.js') }}"></script>
+    <!-- All init script -->
+    <script src="{{ asset('admin/js/plugins-init/toastr-init.js') }}"></script>
+
     <!-- Dashboard 1 -->
     <script src="{{ asset('admin/js/dashboard/dashboard-1.js') }}"></script>
     <script src="{{ asset('admin/js/custom.min.js') }}"></script>
     <script src="{{ asset('admin/js/deznav-init.js') }}"></script>
-
+    <script src="{{ asset('admin/vendor/datatables/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/js/plugins-init/datatables.init.js') }}"></script>
     <script>
         function carouselReview() {
             /*  testimonial one function by = owl.carousel.js */

@@ -7,16 +7,20 @@
                 </a>
 
             </li>
-            <li><a href="widget-basic.html" class="ai-icon @if(request()->is('data-kriteria')) mm-active @endif" aria-expanded="false">
+            <li><a href="/data-kriteria" class="ai-icon @if(request()->is('data-kriteria')) mm-active @endif" aria-expanded="false">
                     <i class="flaticon-381-bookmark-1"></i>
                     <span class="nav-text">Data Kriteria</span>
                 </a>
             </li>
-            <li><a href="widget-basic.html" class="ai-icon @if(request()->is('data-user')) mm-active @endif" aria-expanded="false">
+            @if(Auth::user()->id_role == '1')
+            <li><a href="/data-user" class="ai-icon @if(request()->is('data-user')) mm-active @endif" aria-expanded="false">
                     <i class="flaticon-381-file"></i>
                     <span class="nav-text">Data User</span>
                 </a>
             </li>
+            @else
+            @endif
+
         </ul>
 
 
