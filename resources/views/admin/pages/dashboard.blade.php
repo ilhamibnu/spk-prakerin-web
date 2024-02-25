@@ -90,6 +90,7 @@
                         <div class="effect bg-danger"></div>
                     </div>
                 </div>
+                @if(Auth::user()->id_role == '1')
                 <div class="col-sm-6">
                     <div class="card avtivity-card">
                         <div class="card-body">
@@ -117,6 +118,10 @@
                         <div class="effect bg-warning"></div>
                     </div>
                 </div>
+                @else
+                @endif
+
+
             </div>
         </div>
     </div>
