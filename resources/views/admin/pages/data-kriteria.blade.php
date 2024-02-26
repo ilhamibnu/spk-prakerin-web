@@ -13,9 +13,9 @@
                 <div class="card-header">
                     <h4 class="card-title">Data Kriteria</h4>
                 </div>
-                <div class="text-end m-2">
+                {{-- <div class="text-end m-2">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#Add" class="btn btn-success shadow btn-xs sharp me-1"><i class="fa fa-add"></i></a>
-                </div>
+                </div> --}}
                 <div class="card-body">
                     @if($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show mt-2">
@@ -54,7 +54,7 @@
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> --}}
                                         </div>
                                     </td>
                                 </tr>
