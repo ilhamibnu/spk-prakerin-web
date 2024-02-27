@@ -81,7 +81,7 @@
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <label>Name</label>
-                                                            <input type="text" name="name" value="{{ $data->name }}" class="form-control" placeholder="John">
+                                                            <input type="text" name="name" value="{{ $data->name }}" class="form-control" placeholder="CV. Jaya Makmur">
                                                         </div>
                                                     </div>
                                                     <div class="row">

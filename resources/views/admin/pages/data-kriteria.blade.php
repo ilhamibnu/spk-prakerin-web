@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>Bobot</th>
+                                    {{-- <th>Bobot</th> --}}
                                     <th>Jenis</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,7 +49,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->bobot }}</td>
+                                    {{-- <td>{{ $data->bobot }}</td> --}}
                                     <td>{{ $data->jenis }}</td>
                                     <td>
                                         <div class="d-flex">
