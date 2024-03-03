@@ -12,7 +12,7 @@ class Siswa extends Model
     protected $table = 'tb_siswa';
 
     protected $fillable = [
-        'nis',
+        'nisn',
         'name',
         'id_ftth',
         'id_cpe',

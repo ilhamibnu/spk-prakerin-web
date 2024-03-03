@@ -47,7 +47,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->nilaiKepentingan->name}} - {{ $data->nilaiKepentingan->bobot }}</td>
+                                    <td>{{ $data->bobot }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
@@ -77,18 +77,10 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="form-group">
-                                                            <label>Jenis</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->nilaiKepentingan->id }}">{{ $data->nilaiKepentingan->name }} - {{ $data->nilaiKepentingan->bobot }} </option>
-                                                                    @foreach ($nilai as $nilai2)
-                                                                    <option value="{{ $nilai2->id }}">{{ $nilai2->name }} - {{ $nilai2->bobot }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
+                                                            <label>Bobot</label>
+                                                            <input type="text" value="{{ $data->bobot }}" name="bobot" class="form-control" placeholder="Test">
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
@@ -151,15 +143,8 @@
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label>Jenis</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Bobot</option>
-                                        @foreach ($nilai as $nilai)
-                                        <option value="{{ $nilai->id }}">{{ $nilai->name }} - {{ $nilai->bobot }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <label>Bobot</label>
+                                <input type="text" name="bobot" class="form-control" placeholder="Test">
                             </div>
                         </div>
                     </div>

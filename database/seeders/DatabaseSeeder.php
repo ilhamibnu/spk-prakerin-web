@@ -10,7 +10,6 @@ use App\Models\Ftth;
 use App\Models\Kjt;
 use App\Models\NilaiSemester;
 use App\Models\Kriteria;
-use App\Models\NilaiKepentingan;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -70,158 +69,134 @@ class DatabaseSeeder extends Seeder
             'jenis' => 'Benefit',
         ]);
 
-        NilaiKepentingan::create([
-            'name' => 'Sangat Rendah',
-            'bobot' => 0,
-        ]);
-
-        NilaiKepentingan::create([
-            'name' => 'Rendah',
-            'bobot' => 0.25,
-        ]);
-
-        NilaiKepentingan::create([
-            'name' => 'Cukup',
-            'bobot' => 0.5,
-        ]);
-
-        NilaiKepentingan::create([
-            'name' => 'Tinggi',
-            'bobot' => 0.75,
-        ]);
-
-        NilaiKepentingan::create([
-            'name' => 'Sangat Tinggi',
-            'bobot' => 1,
-        ]);
-
         Absensi::create([
             'name' => '<60',
-            'id_nilai_kepentingan' => 1,
+            'bobot' => 0.25
         ]);
 
         Absensi::create([
             'name' => '60-69',
-            'id_nilai_kepentingan' => 2,
+            'bobot' => 0.5
         ]);
 
         Absensi::create([
             'name' => '70-79',
-            'id_nilai_kepentingan' => 3,
+            'bobot' => 0.75
         ]);
 
         Absensi::create([
             'name' => '80-89',
-            'id_nilai_kepentingan' => 4,
+            'bobot' => 0.9
         ]);
 
         Absensi::create([
             'name' => '>=90',
-            'id_nilai_kepentingan' => 5,
+            'bobot' => 1
         ]);
 
 
         Cpe::create([
             'name' => '<60',
-            'id_nilai_kepentingan' => 1,
+            'bobot' => 0.25
         ]);
 
         Cpe::create([
             'name' => '60-69',
-            'id_nilai_kepentingan' => 2,
+            'bobot' => 0.5
         ]);
 
         Cpe::create([
             'name' => '70-79',
-            'id_nilai_kepentingan' => 3,
+            'bobot' => 0.75
         ]);
 
         Cpe::create([
             'name' => '80-89',
-            'id_nilai_kepentingan' => 4,
+            'bobot' => 0.9
         ]);
 
         Cpe::create([
             'name' => '>=90',
-            'id_nilai_kepentingan' => 5,
+            'bobot' => 1
         ]);
 
 
         Ftth::create([
             'name' => '<60',
-            'id_nilai_kepentingan' => 1,
+            'bobot' => 0.25
         ]);
 
         Ftth::create([
             'name' => '60-69',
-            'id_nilai_kepentingan' => 2,
+            'bobot' => 0.5
         ]);
 
         Ftth::create([
             'name' => '70-79',
-            'id_nilai_kepentingan' => 3,
+            'bobot' => 0.75
         ]);
 
         Ftth::create([
             'name' => '80-89',
-            'id_nilai_kepentingan' => 4,
+            'bobot' => 0.9
         ]);
 
         Ftth::create([
             'name' => '>=90',
-            'id_nilai_kepentingan' => 5,
+            'bobot' => 1
         ]);
 
 
         Kjt::create([
             'name' => '<60',
-            'id_nilai_kepentingan' => 1,
+            'bobot' => 0.25
         ]);
 
         Kjt::create([
             'name' => '60-69',
-            'id_nilai_kepentingan' => 2,
+            'bobot' => 0.5
         ]);
 
         Kjt::create([
             'name' => '70-79',
-            'id_nilai_kepentingan' => 3,
+            'bobot' => 0.75
         ]);
 
         Kjt::create([
             'name' => '80-89',
-            'id_nilai_kepentingan' => 4,
+            'bobot' => 0.9
         ]);
 
         Kjt::create([
             'name' => '>=90',
-            'id_nilai_kepentingan' => 5,
+            'bobot' => 1
         ]);
 
 
         NilaiSemester::create([
             'name' => '<60',
-            'id_nilai_kepentingan' => 1,
+            'bobot' => 0.25
         ]);
 
         NilaiSemester::create([
             'name' => '60-69',
-            'id_nilai_kepentingan' => 2,
+            'bobot' => 0.5
         ]);
 
         NilaiSemester::create([
             'name' => '70-79',
-            'id_nilai_kepentingan' => 3,
+            'bobot' => 0.75
         ]);
 
         NilaiSemester::create([
             'name' => '80-89',
-            'id_nilai_kepentingan' => 4,
+            'bobot' => 0.9
         ]);
 
         NilaiSemester::create([
             'name' => '>=90',
-            'id_nilai_kepentingan' => 5,
+            'bobot' => 1
         ]);
+
     }
 }

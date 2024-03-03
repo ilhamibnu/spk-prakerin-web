@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tb_absensi', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('bobot');
             $table->timestamps();
         });
     }

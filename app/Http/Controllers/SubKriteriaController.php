@@ -7,7 +7,6 @@ use App\Models\Ftth;
 use App\Models\Cpe;
 use App\Models\Absensi;
 use App\Models\Kjt;
-use App\Models\NilaiKepentingan;
 use App\Models\NilaiSemester;
 
 
@@ -16,11 +15,9 @@ class SubKriteriaController extends Controller
     // FTTH
     public function indexftth()
     {
-        $nilai = NilaiKepentingan::all();
-        $data = Ftth::with('nilaiKepentingan')->get();
+        $data = Ftth::all();
         return view('admin.pages.data-ftth', [
             'data' => $data,
-            'nilai' => $nilai
         ]);
     }
 
@@ -28,15 +25,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required',
+            'bobot' => 'required',
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         Ftth::create([
             'name' => $request->name,
-            'id_nilai_kepentingan' => $request->id_nilai_kepentingan
+            'bobot' => $request->bobot
         ]);
 
         return redirect('/data-ftth')->with('store', 'Data berhasil ditambahkan!');
@@ -46,15 +43,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required'
+            'bobot' => 'required'
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         $data = Ftth::find($id);
         $data->name = $request->name;
-        $data->id_nilai_kepentingan = $request->id_nilai_kepentingan;
+        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-ftth')->with('update', 'Data berhasil diupdate!');
@@ -71,11 +68,9 @@ class SubKriteriaController extends Controller
     // CPE
     public function indexcpe()
     {
-        $nilai = NilaiKepentingan::all();
-        $data = Cpe::with('nilaiKepentingan')->get();
+        $data = Cpe::all();
         return view('admin.pages.data-cpe', [
             'data' => $data,
-            'nilai' => $nilai
         ]);
     }
 
@@ -83,15 +78,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required',
+            'bobot' => 'required',
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         Cpe::create([
             'name' => $request->name,
-            'id_nilai_kepentingan' => $request->id_nilai_kepentingan
+            'bobot' => $request->bobot
         ]);
 
         return redirect('/data-cpe')->with('store', 'Data berhasil ditambahkan!');
@@ -101,15 +96,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required'
+            'bobot' => 'required'
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         $data = Cpe::find($id);
         $data->name = $request->name;
-        $data->id_nilai_kepentingan = $request->id_nilai_kepentingan;
+        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-cpe')->with('update', 'Data berhasil diupdate!');
@@ -126,11 +121,9 @@ class SubKriteriaController extends Controller
     // Absensi
     public function indexabsensi()
     {
-        $nilai = NilaiKepentingan::all();
-        $data = Absensi::with('nilaiKepentingan')->get();
+        $data = Absensi::all();
         return view('admin.pages.data-absensi', [
             'data' => $data,
-            'nilai' => $nilai
         ]);
     }
 
@@ -138,15 +131,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required',
+            'bobot' => 'required',
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         Absensi::create([
             'name' => $request->name,
-            'id_nilai_kepentingan' => $request->id_nilai_kepentingan
+            'bobot' => $request->bobot
         ]);
 
         return redirect('/data-absensi')->with('store', 'Data berhasil ditambahkan!');
@@ -156,15 +149,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required'
+            'bobot' => 'required'
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         $data = Absensi::find($id);
         $data->name = $request->name;
-        $data->id_nilai_kepentingan = $request->id_nilai_kepentingan;
+        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-absensi')->with('update', 'Data berhasil diupdate!');
@@ -181,11 +174,9 @@ class SubKriteriaController extends Controller
     // KJT
     public function indexkjt()
     {
-        $nilai = NilaiKepentingan::all();
-        $data = Kjt::with('nilaiKepentingan')->get();
+        $data = Kjt::all();
         return view('admin.pages.data-kjt', [
             'data' => $data,
-            'nilai' => $nilai
         ]);
     }
 
@@ -193,15 +184,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required',
+            'bobot' => 'required',
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         Kjt::create([
             'name' => $request->name,
-            'id_nilai_kepentingan' => $request->id_nilai_kepentingan
+            'bobot' => $request->bobot
         ]);
 
         return redirect('/data-kjt')->with('store', 'Data berhasil ditambahkan!');
@@ -211,15 +202,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required'
+            'bobot' => 'required'
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         $data = Kjt::find($id);
         $data->name = $request->name;
-        $data->id_nilai_kepentingan = $request->id_nilai_kepentingan;
+        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-kjt')->with('update', 'Data berhasil diupdate!');
@@ -236,11 +227,10 @@ class SubKriteriaController extends Controller
     // Nilai Semester
     public function indexnilaisemester()
     {
-        $nilai = NilaiKepentingan::all();
-        $data = NilaiSemester::with('nilaiKepentingan')->get();
+        $data = NilaiSemester::all();
         return view('admin.pages.data-nilai-semester', [
             'data' => $data,
-            'nilai' => $nilai
+
         ]);
     }
 
@@ -248,15 +238,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required',
+            'bobot' => 'required',
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         NilaiSemester::create([
             'name' => $request->name,
-            'id_nilai_kepentingan' => $request->id_nilai_kepentingan
+            'bobot' => $request->bobot
         ]);
 
         return redirect('/data-nilai-semester')->with('store', 'Data berhasil ditambahkan!');
@@ -266,15 +256,15 @@ class SubKriteriaController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'id_nilai_kepentingan' => 'required'
+            'bobot' => 'required'
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'id_nilai_kepentingan.required' => 'Bobot Kriteria harus diisi!'
+            'bobot.required' => 'Bobot Kriteria harus diisi!'
         ]);
 
         $data = NilaiSemester::find($id);
         $data->name = $request->name;
-        $data->id_nilai_kepentingan = $request->id_nilai_kepentingan;
+        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-nilai-semester')->with('update', 'Data berhasil diupdate!');

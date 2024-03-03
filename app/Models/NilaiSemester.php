@@ -15,12 +15,6 @@ class NilaiSemester extends Model
         'name',
         'id_nilai_kepentingan',
     ];
-
-    public function nilaiKepentingan()
-    {
-        return $this->belongsTo(NilaiKepentingan::class, 'id_nilai_kepentingan', 'id');
-    }
-
     public function siswa()
     {
         return $this->belongsTo(Siswa::class, 'id_siswa', 'id');

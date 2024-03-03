@@ -9,6 +9,7 @@ use App\Http\Controllers\NilaiKepentinganController;
 use App\Http\Controllers\SubKriteriaController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\PenghitunganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,3 +91,6 @@ Route::get('/data-mitra', [MitraController::class, 'index'])->middleware('IsLogi
 Route::post('/data-mitra', [MitraController::class, 'store'])->middleware('IsLogin');
 Route::put('/data-mitra/{id}', [MitraController::class, 'update'])->middleware('IsLogin');
 Route::delete('/data-mitra/{id}', [MitraController::class, 'destroy'])->middleware('IsLogin');
+
+#Penghitungan
+Route::get('/penghitungan', [PenghitunganController::class, 'index'])->middleware('IsLogin');

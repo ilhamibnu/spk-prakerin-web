@@ -102,8 +102,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_ftth" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_ftth }}">{{ $data->ftth->name }}</option>
-                                                                    @foreach ($ftth as $ftth)
-                                                                    <option value="{{ $ftth->id }}">{{ $ftth->name }}</option>
+                                                                    @foreach ($ftth as $ftth2)
+                                                                    <option value="{{ $ftth2->id }}">{{ $ftth2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -116,8 +116,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_cpe" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_cpe }}">{{ $data->cpe->name }}</option>
-                                                                    @foreach ($cpe as $cpe)
-                                                                    <option value="{{ $cpe->id }}">{{ $cpe->name }}</option>
+                                                                    @foreach ($cpe as $cpe2)
+                                                                    <option value="{{ $cpe2->id }}">{{ $cpe2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -130,8 +130,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_absensi" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_absensi }}">{{ $data->absensi->name }}</option>
-                                                                    @foreach ($absensi as $absensi)
-                                                                    <option value="{{ $absensi->id }}">{{ $absensi->name }}</option>
+                                                                    @foreach ($absensi as $absensi2)
+                                                                    <option value="{{ $absensi2->id }}">{{ $absensi2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -144,8 +144,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_kjt" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_kjt }}">{{ $data->kjt->name }}</option>
-                                                                    @foreach ($kjt as $kjt)
-                                                                    <option value="{{ $kjt->id }}">{{ $kjt->name }}</option>
+                                                                    @foreach ($kjt as $kjt2)
+                                                                    <option value="{{ $kjt2->id }}">{{ $kjt2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -158,8 +158,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_nilai_semester" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_nilai_semester }}">{{ $data->nilaiSemester->name }}</option>
-                                                                    @foreach ($nilaisemester as $nilaisemester)
-                                                                    <option value="{{ $nilaisemester->id }}">{{ $nilaisemester->name }}</option>
+                                                                    @foreach ($nilaisemester as $nilaisemester2)
+                                                                    <option value="{{ $nilaisemester2->id }}">{{ $nilaisemester2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>

@@ -60,11 +60,107 @@
                                     <td>{{ $data->nilaiSemester->name }}</td>
                                     <td>
                                         <div class="d-flex">
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#Detail{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
+                                <!-- Detail mitra -->
+                                <div class="modal fade" id="Detail{{ $data->id }}">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Detail</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @php
+                                                $jenis_ftth = \App\Models\Kriteria::where('name', 'Ftth')->first();
+                                                $jenis_cpe = \App\Models\Kriteria::where('name', 'Cpe')->first();
+                                                $jenis_absensi = \App\Models\Kriteria::where('name', 'Absensi')->first();
+                                                $jenis_kjt = \App\Models\Kriteria::where('name', 'Kjt')->first();
+                                                $jenis_nilai_semester = \App\Models\Kriteria::where('name', 'Nilai Semester')->first();
+
+                                                $bobot_ftth = $data->ftth->bobot;
+                                                $bobot_cpe = $data->cpe->bobot;
+                                                $bobot_absensi = $data->absensi->bobot;
+                                                $bobot_kjt = $data->kjt->bobot;
+                                                $bobot_nilai_semester = $data->nilaiSemester->bobot;
+
+                                                $hasil_perhitungan = array();
+
+                                                foreach ($mitra as $data_mitra) {
+                                                if($jenis_ftth->jenis == "Benefit"){
+                                                $nilai_ftth = $data_mitra->ftth->bobot / $nilaiftthtertinggi * $bobot_ftth;
+                                                }else{
+                                                $nilai_ftth = $nilaiftthterendah / $data_mitra->ftth->bobot * $bobot_ftth;
+                                                }
+
+                                                if($jenis_cpe->jenis == "Benefit"){
+                                                $nilai_cpe = $data_mitra->cpe->bobot / $nilaicpeteringgi * $bobot_cpe;
+                                                }else{
+                                                $nilai_cpe = $nilaicpeterendah / $data_mitra->cpe->bobot * $bobot_cpe;
+                                                }
+
+
+                                                if($jenis_absensi->jenis == "Benefit"){
+                                                $nilai_absensi = $data_mitra->absensi->bobot / $nilaiabsensiteringgi * $bobot_absensi;
+                                                }else{
+                                                $nilai_absensi = $nilaiabsensiterendah / $data_mitra->absensi->bobot * $bobot_absensi;
+                                                }
+
+                                                if($jenis_kjt->jenis == "Benefit"){
+                                                $nilai_kjt = $data_mitra->kjt->bobot / $nilaikjttertinggi * $bobot_kjt;
+                                                }else{
+                                                $nilai_kjt = $nilaikjtterendah / $data_mitra->kjt->bobot * $bobot_kjt;
+                                                }
+
+                                                if($jenis_nilai_semester->jenis == "Benefit"){
+                                                $nilai_nilai_semester = $data_mitra->nilaiSemester->bobot / $nilaisemestertertinggi * $bobot_nilai_semester;
+                                                }else{
+                                                $nilai_nilai_semester = $nilaisemesterterendah / $data_mitra->nilaiSemester->bobot * $bobot_nilai_semester;
+                                                }
+
+                                                // total
+                                                $totaal = $nilai_ftth + $nilai_cpe + $nilai_absensi + $nilai_kjt + $nilai_nilai_semester;
+
+
+                                                $hasil_perhitungan[] = array(
+                                                'name' => $data_mitra->name,
+                                                'total' => $totaal
+                                                );
+
+                                                }
+
+                                                usort($hasil_perhitungan, function($a, $b) {
+                                                if ($a['total'] == $b['total']) {
+                                                return 0;
+                                                }
+                                                return ($a['total'] > $b['total']) ? -1 : 1;
+                                                });
+
+                                                $lima_tertinggi = array_slice($hasil_perhitungan, 0, 5);
+
+                                                $no = 1;
+
+
+                                                foreach ($lima_tertinggi as $dataaa) {
+                                                echo $no++ . ". " . $dataaa['name'] . " - " . $dataaa['total'] . "<br>";
+
+                                                }
+
+                                                @endphp
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- detail mitra -->
                                 <!-- edit -->
                                 <div class="modal fade" id="Edit{{ $data->id }}">
                                     <div class="modal-dialog" role="document">
@@ -97,8 +193,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_ftth" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_ftth }}">{{ $data->ftth->name }}</option>
-                                                                    @foreach ($ftth as $ftth)
-                                                                    <option value="{{ $ftth->id }}">{{ $ftth->name }}</option>
+                                                                    @foreach ($ftth as $ftth2)
+                                                                    <option value="{{ $ftth2->id }}">{{ $ftth2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -111,8 +207,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_cpe" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_cpe }}">{{ $data->cpe->name }}</option>
-                                                                    @foreach ($cpe as $cpe)
-                                                                    <option value="{{ $cpe->id }}">{{ $cpe->name }}</option>
+                                                                    @foreach ($cpe as $cpe2)
+                                                                    <option value="{{ $cpe2->id }}">{{ $cpe2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -125,8 +221,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_absensi" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_absensi }}">{{ $data->absensi->name }}</option>
-                                                                    @foreach ($absensi as $absensi)
-                                                                    <option value="{{ $absensi->id }}">{{ $absensi->name }}</option>
+                                                                    @foreach ($absensi as $absensi2)
+                                                                    <option value="{{ $absensi2->id }}">{{ $absensi2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -139,8 +235,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_kjt" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_kjt }}">{{ $data->kjt->name }}</option>
-                                                                    @foreach ($kjt as $kjt)
-                                                                    <option value="{{ $kjt->id }}">{{ $kjt->name }}</option>
+                                                                    @foreach ($kjt as $kjt2)
+                                                                    <option value="{{ $kjt2->id }}">{{ $kjt2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -153,8 +249,8 @@
                                                             <div class="dropdown bootstrap-select form-control default-select form-control-sm">
                                                                 <select name="id_nilai_semester" class="form-control default-select form-control-sm">
                                                                     <option selected value="{{ $data->id_nilai_semester }}">{{ $data->nilaiSemester->name }}</option>
-                                                                    @foreach ($nilaisemester as $nilaisemester)
-                                                                    <option value="{{ $nilaisemester->id }}">{{ $nilaisemester->name }}</option>
+                                                                    @foreach ($nilaisemester as $nilaisemester2)
+                                                                    <option value="{{ $nilaisemester2->id }}">{{ $nilaisemester2->name }}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>

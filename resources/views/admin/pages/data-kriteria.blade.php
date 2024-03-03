@@ -75,7 +75,7 @@
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <label>Name</label>
-                                                            <input type="text" value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
+                                                            <input type="text" disabled value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -156,7 +156,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" value="" name="name" class="form-control" placeholder="Test">
+                                <input disabled type="text" value="" name="name" class="form-control" placeholder="Test">
                             </div>
                         </div>
                         <div class="row">
