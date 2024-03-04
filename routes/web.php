@@ -10,6 +10,7 @@ use App\Http\Controllers\SubKriteriaController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\PenghitunganController;
+use App\Http\Controllers\LandingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,10 @@ use App\Http\Controllers\PenghitunganController;
 |
 */
 
+#Landing
+Route::get('/', [LandingController::class, 'index']);
+
 #Auth
-Route::get('/', [AuthController::class, 'indexlogin']);
 Route::get('/login', [AuthController::class, 'indexlogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('IsLogin');
