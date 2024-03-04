@@ -1,6 +1,7 @@
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
+            @if(Auth::user()->id_role == '1')
             <li><a class="ai-icon @if(request()->is('dashboard')) mm-active @endif" href="/dashboard" aria-expanded="false">
                     <i class="flaticon-381-networking"></i>
                     <span class="nav-text">Dashboard</span>
@@ -30,21 +31,37 @@
                     <span class="nav-text">Data Mitra</span>
                 </a>
             </li>
-
-            @if(Auth::user()->id_role == '1')
             <li><a href="/data-user" class="ai-icon @if(request()->is('data-user')) mm-active @endif" aria-expanded="false">
                     <i class="flaticon-381-file"></i>
                     <span class="nav-text">Data User</span>
                 </a>
             </li>
-            @else
-            @endif
+
 
             <li><a href="/penghitungan" class="ai-icon @if(request()->is('penghitungan')) mm-active @endif" aria-expanded="false">
                     <i class="flaticon-381-file"></i>
                     <span class="nav-text">Penghitungan</span>
                 </a>
             </li>
+            @else
+            <li><a class="ai-icon @if(request()->is('dashboard')) mm-active @endif" href="/dashboard" aria-expanded="false">
+                    <i class="flaticon-381-networking"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+            </li>
+            <li><a href="/data-siswa" class="ai-icon @if(request()->is('data-siswa')) mm-active @endif" aria-expanded="false">
+                    <i class="flaticon-381-file"></i>
+                    <span class="nav-text">Data Siswa</span>
+                </a>
+            </li>
+            <li><a href="/data-mitra" class="ai-icon @if(request()->is('data-mitra')) mm-active @endif" aria-expanded="false">
+                    <i class="flaticon-381-file"></i>
+                    <span class="nav-text">Data Mitra</span>
+                </a>
+            </li>
+            @endif
+
 
         </ul>
 
