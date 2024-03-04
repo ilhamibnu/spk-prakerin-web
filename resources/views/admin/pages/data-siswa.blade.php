@@ -44,6 +44,7 @@
                                     <th>Absensi</th>
                                     <th>Kjt</th>
                                     <th>Nilai Semester</th>
+                                    <th>Mitra</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -59,8 +60,10 @@
                                     <td>{{ $data->kjt->name }}</td>
                                     <td>{{ $data->nilaiSemester->name }}</td>
                                     <td>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#Detail{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                    <td>
                                         <div class="d-flex">
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#Detail{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>
@@ -99,14 +102,14 @@
                                                 }
 
                                                 if($jenis_cpe->jenis == "Benefit"){
-                                                $nilai_cpe = $data_mitra->cpe->bobot / $nilaicpeteringgi * $bobot_cpe;
+                                                $nilai_cpe = $data_mitra->cpe->bobot / $nilaicpetertinggi * $bobot_cpe;
                                                 }else{
                                                 $nilai_cpe = $nilaicpeterendah / $data_mitra->cpe->bobot * $bobot_cpe;
                                                 }
 
 
                                                 if($jenis_absensi->jenis == "Benefit"){
-                                                $nilai_absensi = $data_mitra->absensi->bobot / $nilaiabsensiteringgi * $bobot_absensi;
+                                                $nilai_absensi = $data_mitra->absensi->bobot / $nilaiabsensitertinggi * $bobot_absensi;
                                                 }else{
                                                 $nilai_absensi = $nilaiabsensiterendah / $data_mitra->absensi->bobot * $bobot_absensi;
                                                 }

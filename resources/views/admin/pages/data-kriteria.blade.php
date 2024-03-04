@@ -75,7 +75,7 @@
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <label>Name</label>
-                                                            <input type="text" disabled value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
+                                                            <input type="text" readonly value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
                                                         </div>
                                                     </div>
                                                     <div class="row">
