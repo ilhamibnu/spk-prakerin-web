@@ -1,16 +1,17 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Data Nilai Semester')
+@section('title', 'Data Nilai Kepentingan')
 
-@section('title-bar', 'Data Nilai Semester')
+@section('title-bar', 'Data Nilai Kepentingan')
 
 @section('content')
 <div class="container-fluid">
+    <!-- row -->
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Nilai Semester</h4>
+                    <h4 class="card-title">Data Nilai Kepentingan</h4>
                 </div>
                 <div class="text-end m-2">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#Add" class="btn btn-success shadow btn-xs sharp me-1"><i class="fa fa-add"></i></a>
@@ -38,16 +39,14 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>bobot</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $data )
+                                @foreach ($nilaikepentingan as $data )
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->bobot }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
@@ -64,7 +63,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                                                 </button>
                                             </div>
-                                            <form action="/data-nilai-semester/{{ $data->id }}" method="post">
+                                            <form action="/data-kriteria/{{ $data->id }}" method="post">
                                                 @csrf
                                                 @method('put')
                                                 <div class="modal-body">
@@ -75,13 +74,6 @@
                                                             <input type="text" value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Bobot</label>
-                                                            <input type="text" value="{{ $data->bobot }}" name="bobot" class="form-control" placeholder="Test">
-                                                        </div>
-                                                    </div>
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
@@ -104,7 +96,7 @@
                                             <div class="modal-body">Anda Yakin Akan Menghapus {{ $data->name }} ?</div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                                                <form action="/data-nilai-semester/{{ $data->id }}" method="post">
+                                                <form action="/data-kriteria/{{ $data->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-primary">Delete</button>
@@ -131,27 +123,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
-                <form action="/data-nilai-semester" method="post">
+                <form action="/data-kriteria" method="post">
                     @csrf
-                    @method('post')
                     <div class="modal-body">
                         @csrf
                         <div class="row">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Test">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Bobot</label>
-                                <input type="text" name="bobot" class="form-control" placeholder="Test">
+                                <input disabled type="text" value="" name="name" class="form-control" placeholder="Test">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                 </form>
             </div>
@@ -234,7 +219,6 @@
 
 </script>
 @endif
-
 <script>
     $('#test').DataTable({
         autoWidth: true,
@@ -308,5 +292,4 @@
     , });
 
 </script>
-
 @endsection

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_kjt', function (Blueprint $table) {
+        Schema::create('tb_detail_siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('bobot');
             $table->timestamps();
         });
     }
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_kjt');
+        Schema::dropIfExists('tb_detail_siswa');
     }
 };

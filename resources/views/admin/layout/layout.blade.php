@@ -34,6 +34,7 @@
     <!-- Toastr -->
     <link rel="stylesheet" href="{{ asset('admin/vendor/toastr/css/toastr.min.css') }}">
     <link rel="stylesheet" href=" {{ asset('admin/css/style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
 </head>
 <body>
@@ -138,6 +139,8 @@
     <!-- All init script -->
     <script src="{{ asset('admin/js/plugins-init/toastr-init.js') }}"></script>
 
+
+    <!-- Jquery -->
 
 
     {{-- <script src="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>

@@ -6,7 +6,7 @@
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta mediarset="SaaS Classic">
-    <link rel="icon" type="image/x-icon" href="#">
+    <link rel="icon" type="image/x-icon" href="{{ asset('admin/images/prakerin1.png') }}">
 
     <!--    Test comment-->
     <!-- Meta Tags -->
@@ -726,7 +726,7 @@
                     <div class="col-md-2">
                         <div class="brand_logo">
                             <a href="index.html">
-                                <img src="{{ asset('landing/wp-content/themes/appilo/img/saas-classic/logo/logo.png') }}" alt="Default Logo" />
+                                <img width="135px" height="135px" src="{{ asset('admin/images/full-logo.png') }}" alt="Default Logo" />
                             </a>
                         </div>
                     </div>
@@ -766,7 +766,7 @@
                                                             {{-- <a class="sc-btn2" href="#"><i aria-hidden="true" class="fas fa-clipboard-list"></i>Get a demo</a> --}}
                                                         </div>
                                                     </div>
-                                                    <div class="banner_mockup"><img decoding="async" src="{{ asset('landing/wp-content/uploads/sites/10/2020/04/b-laptop-1.png') }}" alt></div>
+                                                    <div class="banner_mockup"><img decoding="async" src="{{ asset('landing/img/prakerin2.png') }}" alt></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -874,7 +874,7 @@
                                                         </div>
                                                         <div class="service_text_box saas2-headline pera-content">
                                                             <h3>{{ $data->name }}</h3>
-                                                            <p>{{ $data->deskripsi }}</p>
+                                                            <p>{{ $data->deskripsi }}</p><br>
                                                             <p>{{ $data->alamat }}</p>
                                                         </div>
                                                     </div>

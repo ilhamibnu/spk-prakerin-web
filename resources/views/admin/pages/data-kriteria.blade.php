@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    {{-- <th>Bobot</th> --}}
+                                    <th>Bobot</th>
                                     <th>Jenis</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,12 +49,12 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    {{-- <td>{{ $data->bobot }}</td> --}}
+                                    <td>{{ $data->bobot }}</td>
                                     <td>{{ $data->jenis }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
-                                            {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a> --}}
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#Delete{{ $data->id }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
@@ -75,7 +75,7 @@
                                                     <div class="row">
                                                         <div class="form-group">
                                                             <label>Name</label>
-                                                            <input type="text" readonly value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
+                                                            <input readonly type="text" value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -156,7 +156,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input disabled type="text" value="" name="name" class="form-control" placeholder="Test">
+                                <input readonly type="text" value="" name="name" class="form-control" placeholder="Test">
                             </div>
                         </div>
                         <div class="row">

@@ -14,35 +14,10 @@ class Siswa extends Model
     protected $fillable = [
         'nisn',
         'name',
-        'id_ftth',
-        'id_cpe',
-        'id_absensi',
-        'id_kjt',
-        'id_nilai_semester',
     ];
 
-    public function ftth()
+    public function detailSiswa()
     {
-        return $this->belongsTo(Ftth::class, 'id_ftth', 'id');
-    }
-
-    public function cpe()
-    {
-        return $this->belongsTo(Cpe::class, 'id_cpe', 'id');
-    }
-
-    public function absensi()
-    {
-        return $this->belongsTo(Absensi::class, 'id_absensi', 'id');
-    }
-
-    public function kjt()
-    {
-        return $this->belongsTo(Kjt::class, 'id_kjt', 'id');
-    }
-
-    public function nilaiSemester()
-    {
-        return $this->belongsTo(NilaiSemester::class, 'id_nilai_semester', 'id');
+        return $this->hasMany(DetailSiswa::class, 'id_siswa', 'id');
     }
 }

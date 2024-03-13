@@ -5,25 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Kriteria extends Model
+class NilaiKepentingan extends Model
 {
     use HasFactory;
 
-    protected $table = 'tb_kriteria';
+    protected $table = 'tb_nilai_kepentingan';
 
     protected $fillable = [
         'name',
-        'bobot',
-        'jenis'
     ];
 
     public function detailSiswa()
     {
-        return $this->hasMany(DetailSiswa::class, 'id_kriteria', 'id');
+        return $this->hasMany(DetailSiswa::class, 'id_nilai_kepentingan', 'id');
     }
 
     public function detailMitra()
     {
-        return $this->hasMany(DetailMitra::class, 'id_kriteria', 'id');
+        return $this->hasMany(DetailMitra::class, 'id_nilai_kepentingan', 'id');
     }
 }

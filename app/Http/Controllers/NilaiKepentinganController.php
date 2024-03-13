@@ -10,9 +10,9 @@ class NilaiKepentinganController extends Controller
 {
     public function index()
     {
-        $data = NilaiKepentingan::all();
+        $nilaikepentingan = NilaiKepentingan::all();
         return view('admin.pages.data-nilai-kepentingan', [
-            'data' => $data
+            'nilaikepentingan' => $nilaikepentingan,
         ]);
     }
 
@@ -20,15 +20,15 @@ class NilaiKepentinganController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'bobot' => 'required'
+
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'bobot.required' => 'Bobot Kriteria harus diisi!'
+
         ]);
 
         NilaiKepentingan::create([
             'name' => $request->name,
-            'bobot' => $request->bobot
+
         ]);
 
         return redirect('/data-nilai-kepentingan')->with('store', 'Data berhasil ditambahkan!');
@@ -38,15 +38,14 @@ class NilaiKepentinganController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'bobot' => 'required'
+
         ], [
             'name.required' => 'Nama Kriteria harus diisi!',
-            'bobot.required' => 'Bobot Kriteria harus diisi!'
+
         ]);
 
         $data = NilaiKepentingan::find($id);
         $data->name = $request->name;
-        $data->bobot = $request->bobot;
         $data->update();
 
         return redirect('/data-nilai-kepentingan')->with('update', 'Data berhasil diupdate!');

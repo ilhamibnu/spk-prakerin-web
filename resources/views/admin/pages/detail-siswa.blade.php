@@ -1,8 +1,8 @@
 @extends('admin.layout.layout')
 
-@section('title', 'Data Ftth')
+@section('title', 'Data Detail Siswa')
 
-@section('title-bar', 'Data Ftth')
+@section('title-bar', 'Data Detail Siswa')
 
 @section('content')
 <div class="container-fluid">
@@ -10,7 +10,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Data Ftth</h4>
+                    <h4 class="card-title">Data Detail Siswa</h4>
                 </div>
                 <div class="text-end m-2">
                     <a href="#" data-bs-toggle="modal" data-bs-target="#Add" class="btn btn-success shadow btn-xs sharp me-1"><i class="fa fa-add"></i></a>
@@ -37,17 +37,17 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Name</th>
-                                    <th>bobot</th>
+                                    <th>Kriteria</th>
+                                    <th>Nilai Kepentingan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($data as $data )
+                                @foreach ($detail_siswa as $data )
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $data->name }}</td>
-                                    <td>{{ $data->bobot }}</td>
+                                    <td>{{ $data->kriteria->name }}</td>
+                                    <td>{{ $data->nilaiKepentingan->name }}</td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Edit{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-pencil"></i></a>
@@ -55,7 +55,8 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- edit -->
+
+                                {{-- edit --}}
                                 <div class="modal fade" id="Edit{{ $data->id }}">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -64,34 +65,49 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                                                 </button>
                                             </div>
-                                            <form action="/data-ftth/{{ $data->id }}" method="post">
+                                            <form action="/detail-siswa/{{ $data->id }}" method="post">
                                                 @csrf
                                                 @method('put')
                                                 <div class="modal-body">
-                                                    @csrf
+                                                    <input hidden type="text" value="{{ $id_siswa }}" name="id_siswa" class="form-control">
                                                     <div class="row">
                                                         <div class="form-group">
-                                                            <label>Name</label>
-                                                            <input type="text" value="{{ $data->name }}" name="name" class="form-control" placeholder="Test">
+                                                            <label>Kriteria</label>
+                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                                                <select name="id_kriteria" class="form-control default-select form-control-sm">
+                                                                    <option value="{{ $data->kriteria->id }}">{{ $data->kriteria->name }}</option>
+                                                                    @foreach ($kriteria2 as $data2)
+                                                                    <option value="{{ $data2->id }}">{{ $data2->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Bobot</label>
-                                                            <input type="text" value="{{ $data->bobot }}" name="bobot" class="form-control" placeholder="Test">
+                                                        <div class="form-group
+                                                            ">
+                                                            <label>Nilai Kepentingan</label>
+                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                                                <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
+                                                                    <option value="{{ $data->nilaiKepentingan->id }}">{{ $data->nilaiKepentingan->name }}</option>
+                                                                    @foreach ($nilai_kepentingan2 as $data2)
+                                                                    <option value="{{ $data2->id }}">{{ $data2->name }}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- edit -->
+                                {{-- edit --}}
+
                                 <!-- delete -->
                                 <div class="modal fade" id="Delete{{ $data->id }}">
                                     <div class="modal-dialog" role="document">
@@ -101,10 +117,10 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal">
                                                 </button>
                                             </div>
-                                            <div class="modal-body">Anda Yakin Akan Menghapus {{ $data->name }} ?</div>
+                                            <div class="modal-body">Anda Yakin Akan Menghapus {{ $data->kriteria->name }} ?</div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                                                <form action="/data-ftth/{{ $data->id }}" method="post">
+                                                <form action="/detail-siswa/{{ $data->id }}" method="post">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-primary">Delete</button>
@@ -131,21 +147,36 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
-                <form action="/data-ftth" method="post">
+                <form action="/detail-siswa" method="post">
                     @csrf
                     @method('post')
                     <div class="modal-body">
                         @csrf
+                        <input hidden type="text" value="{{ $id_siswa }}" name="id_siswa" class="form-control">
                         <div class="row">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Test">
+                                <label>Kriteria</label>
+                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                    <select name="id_kriteria" class="form-control default-select form-control-sm">
+                                        <option selected disabled>Pilih Kriteria</option>
+                                        @foreach ($kriteria as $kriteria)
+                                        <option value="{{ $kriteria->id }}">{{ $kriteria->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
-                                <label>Bobot</label>
-                                <input type="text" name="bobot" class="form-control" placeholder="Test">
+                                <label>Nilai Kepentingan</label>
+                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
+                                    <select name="id_nilai_kepentingan" class="form-control default-select form-control-sm">
+                                        <option selected disabled>Pilih Nilai Kepentingan</option>
+                                        @foreach ($nilai_kepentingan as $nilai_kepentingan)
+                                        <option value="{{ $nilai_kepentingan->id }}">{{ $nilai_kepentingan->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,6 +197,30 @@
 @if(Session::get('store'))
 <script>
     toastr.success("Data Berhasil Ditambahkan", "Info", {
+        timeOut: 5000
+        , closeButton: !0
+        , debug: !1
+        , newestOnTop: !0
+        , progressBar: !0
+        , positionClass: "toast-top-right"
+        , preventDuplicates: !0
+        , onclick: null
+        , showDuration: "300"
+        , hideDuration: "1000"
+        , extendedTimeOut: "1000"
+        , showEasing: "swing"
+        , hideEasing: "linear"
+        , showMethod: "fadeIn"
+        , hideMethod: "fadeOut"
+        , tapToDismiss: !1
+    })
+
+</script>
+@endif
+
+@if(Session::get('sudahada'))
+<script>
+    toastr.error("Data Sudah Ada", "info", {
         timeOut: 5000
         , closeButton: !0
         , debug: !1
@@ -307,4 +362,5 @@
     , });
 
 </script>
+
 @endsection

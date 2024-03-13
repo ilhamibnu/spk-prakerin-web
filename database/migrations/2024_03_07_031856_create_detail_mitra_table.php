@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_nilai_semester', function (Blueprint $table) {
+        Schema::create('tb_detail_mitra', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('bobot');
             $table->timestamps();
         });
@@ -24,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_nilai_semester');
+        Schema::dropIfExists('tb_detail_mitra');
     }
 };

@@ -38,11 +38,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
-                                    <th>Ftth</th>
-                                    <th>Cpe</th>
-                                    <th>Absensi</th>
-                                    <th>Kjt</th>
-                                    <th>Nilai Semester</th>
+                                    <th>Bobot</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -51,11 +47,9 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $data->name }}</td>
-                                    <td>{{ $data->ftth->name }}</td>
-                                    <td>{{ $data->cpe->name }}</td>
-                                    <td>{{ $data->absensi->name }}</td>
-                                    <td>{{ $data->kjt->name }}</td>
-                                    <td>{{ $data->nilaiSemester->name }}</td>
+                                    <td>
+                                        <a href="/detail-mitra/{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
+                                    </td>
                                     <td>
                                         <div class="d-flex">
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#Detail{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
@@ -94,75 +88,6 @@
                                                         <div class="form-group">
                                                             <label>Alamat</label>
                                                             <textarea class="form-control" rows="3" name="alamat">{{ $data->alamat }}</textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Ftth</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_ftth" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->id_ftth }}">{{ $data->ftth->name }}</option>
-                                                                    @foreach ($ftth as $ftth2)
-                                                                    <option value="{{ $ftth2->id }}">{{ $ftth2->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Cpe</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_cpe" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->id_cpe }}">{{ $data->cpe->name }}</option>
-                                                                    @foreach ($cpe as $cpe2)
-                                                                    <option value="{{ $cpe2->id }}">{{ $cpe2->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Absensi</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_absensi" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->id_absensi }}">{{ $data->absensi->name }}</option>
-                                                                    @foreach ($absensi as $absensi2)
-                                                                    <option value="{{ $absensi2->id }}">{{ $absensi2->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Kjt</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_kjt" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->id_kjt }}">{{ $data->kjt->name }}</option>
-                                                                    @foreach ($kjt as $kjt2)
-                                                                    <option value="{{ $kjt2->id }}">{{ $kjt2->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="form-group">
-                                                            <label>Nilai Semester</label>
-                                                            <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                                                <select name="id_nilai_semester" class="form-control default-select form-control-sm">
-                                                                    <option selected value="{{ $data->id_nilai_semester }}">{{ $data->nilaiSemester->name }}</option>
-                                                                    @foreach ($nilaisemester as $nilaisemester2)
-                                                                    <option value="{{ $nilaisemester2->id }}">{{ $nilaisemester2->name }}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -266,75 +191,6 @@
                             <div class="form-group">
                                 <label>Alamat</label>
                                 <textarea class="form-control" rows="3" name="alamat"></textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Ftth</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_ftth" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Ftth</option>
-                                        @foreach ($ftth as $ftth)
-                                        <option value="{{ $ftth->id }}">{{ $ftth->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Cpe</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_cpe" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Cpe</option>
-                                        @foreach ($cpe as $cpe)
-                                        <option value="{{ $cpe->id }}">{{ $cpe->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Absensi</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_absensi" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Absensi</option>
-                                        @foreach ($absensi as $absensi)
-                                        <option value="{{ $absensi->id }}">{{ $absensi->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Kjt</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_kjt" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Kjt</option>
-                                        @foreach ($kjt as $kjt)
-                                        <option value="{{ $kjt->id }}">{{ $kjt->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="form-group">
-                                <label>Nilai Semester</label>
-                                <div class="dropdown bootstrap-select form-control default-select form-control-sm">
-                                    <select name="id_nilai_semester" class="form-control default-select form-control-sm">
-                                        <option selected disabled>Pilih Nilai Semester</option>
-                                        @foreach ($nilaisemester as $nilaisemester)
-                                        <option value="{{ $nilaisemester->id }}">{{ $nilaisemester->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                             </div>
                         </div>
                     </div>
