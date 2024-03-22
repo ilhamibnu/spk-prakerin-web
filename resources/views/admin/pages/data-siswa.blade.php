@@ -41,6 +41,7 @@
                                     <th>Nisn</th>
                                     <th>Name</th>
                                     <th>Nilai Bobot</th>
+                                    <th>Rekomendasi</th>
                                     <th>Mitra</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,6 +54,13 @@
                                     <td>{{ $data->name }}</td>
                                     <td>
                                         <a href="/detail-siswa/{{ $data->id }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        @if($data->rekomendasi != null)
+                                        {{ $data->rekomendasi }}
+                                        @else
+                                        -
+                                        @endif
                                     </td>
                                     <td>
                                         <a href="/data-penghitungan/{{ $data->id }}" class="btn btn-info shadow btn-xs sharp me-1"><i class="fa fa-eye"></i></a>

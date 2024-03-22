@@ -14,6 +14,7 @@ class Siswa extends Model
     protected $fillable = [
         'nisn',
         'name',
+        'rekomendasi',
     ];
 
     public function detailSiswa()

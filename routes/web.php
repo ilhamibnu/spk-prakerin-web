@@ -75,6 +75,9 @@ Route::post('/detail-siswa', [DetailSiswaController::class, 'store'])->middlewar
 Route::put('/detail-siswa/{id}', [DetailSiswaController::class, 'update'])->middleware('IsLogin');
 Route::delete('/detail-siswa/{id}', [DetailSiswaController::class, 'destroy'])->middleware('IsLogin');
 
+Route::post('/rekomendasi-siswa', [SiswaController::class, 'rekomendasiSiswa'])->middleware('IsLogin');
+
+
 #Detail Mitra
 Route::get('/detail-mitra/{id}', [DetailMitraController::class, 'index'])->middleware('IsLogin');
 Route::post('/detail-mitra', [DetailMitraController::class, 'store'])->middleware('IsLogin');

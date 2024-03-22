@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nisn');
             $table->string('name');
+            $table->string('rekomendasi')->nullable();
             $table->timestamps();
         });
     }

@@ -29,7 +29,7 @@ class DetailSiswaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'id_kriteria' => 'required|unique:tb_detail_siswa',
+            'id_kriteria' => 'required',
             'id_nilai_kepentingan' => 'required',
         ], [
             'id_kriteria.required' => 'Kriteria tidak boleh kosong',
@@ -53,7 +53,7 @@ class DetailSiswaController extends Controller
         $detail_siswa = DetailSiswa::find($id);
 
         $this->validate($request, [
-            'id_kriteria' => 'required|unique:tb_detail_siswa,id_kriteria,' . $detail_siswa->id_kriteria . ',id_kriteria',
+            'id_kriteria' => 'required',
             'id_nilai_kepentingan' => 'required',
         ], [
             'id_kriteria.required' => 'Kriteria tidak boleh kosong',

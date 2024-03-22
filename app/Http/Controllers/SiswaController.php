@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailSiswa;
 use App\Models\Mitra;
 use App\Models\Siswa;
+use App\Models\Kriteria;
+use App\Models\DetailMitra;
+use App\Models\DetailSiswa;
 use App\Imports\SiswaImport;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class SiswaController extends Controller
@@ -18,6 +20,32 @@ class SiswaController extends Controller
 
         $mitra = Mitra::all();
         $siswa = Siswa::all();
+        foreach ($siswa as $s) {
+
+            $detail_siswa = DetailSiswa::where('id_siswa', $s->id)->get();
+
+            if ($detail_siswa->count() == 20) {
+                echo "
+                <script>
+                    function rekomendasi{$s->id}() {
+                        var iframe = document.getElementById('hidden-iframe{$s->id}');
+                        if (iframe === null) {
+                            iframe = document.createElement('iframe');
+                            iframe.id = 'hidden-iframe{$s->id}';
+                            iframe.style.display = 'none';
+                            document.body.appendChild(iframe);
+                        }
+                        iframe.src = '/data-penghitungan/{$s->id}';
+                    }
+                    window.onload = function() {
+                        rekomendasi{$s->id}();
+                    };
+                </script>
+            ";
+            }else{
+
+            }
+        }
 
         return view('admin.pages.data-siswa', [
 
@@ -97,5 +125,20 @@ class SiswaController extends Controller
         Excel::import(new SiswaImport, public_path('/excel/siswa/' . $namafile));
 
         return redirect()->back()->with('store', 'Data berhasil diimport');
+    }
+
+    public function rekomendasiSiswa(Request $request)
+    {
+        $id_siswa = $request->id_siswa;
+        $nama_mitra = $request->nama_mitra;
+
+        $siswa = Siswa::find($id_siswa);
+        if ($siswa) {
+            $siswa->rekomendasi = $nama_mitra;
+            $siswa->save();
+            return response()->json(['success' => true, 'message' => 'Rekomendasi berhasil disimpan.']);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Siswa tidak ditemukan.'], 404);
+        }
     }
 }

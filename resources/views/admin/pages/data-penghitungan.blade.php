@@ -304,9 +304,7 @@
                             <thead>
                                 <tr>
                                     <th>Mitra</th>
-                                    {{-- @foreach ($kriteria as $data_kriteria)
-                                    <th id="{{ $data_kriteria->id }}">{{ $data_kriteria->name }}</th>
-                                    @endforeach --}}
+
                                     <th>Total</th>
 
                                 </tr>
@@ -315,170 +313,7 @@
                                 @foreach ($mitra as $detail_mitra)
                                 <tr>
                                     <td>{{ $detail_mitra->name }}</td>
-                                    {{-- @foreach ($kriteria as $data_kriteria)
-                                    @foreach ($detail_siswa as $data_detail_siswa)
-                                    @php
-                                    $bobot = \App\Models\DetailMitra::where('id_mitra', $detail_mitra->id)->where('id_kriteria', $data_kriteria->id)->where('id_kriteria', $data_detail_siswa->id_kriteria)->where('id_nilai_kepentingan', $data_detail_siswa->id_nilai_kepentingan)->first();
-                                    if ($bobot) {
-                                    if($data_kriteria->jenis == 'Benefit'){
-                                    if($data_kriteria->name == 'Ftth'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var max = Math.max.apply(null, $('#test-1 td#Ftth').map(function() {return $(this).text();}).get());
 
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = nilai / max * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-
-                                    }elseif($data_kriteria->name == 'Cpe'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var max = Math.max.apply(null, $('#test-1 td#Cpe').map(function() {return $(this).text();}).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = nilai / max * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Absensi'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var max = Math.max.apply(null, $('#test-1 td#Absensi').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = nilai / max * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Kjt'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var max = Math.max.apply(null, $('#test-1 td#Kjt').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = nilai / max * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Nilai Semester'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var max = Math.max.apply(null, $('#test-1 td#NilaiSemester').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = nilai / max * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }
-
-                                    }else{
-                                    if($data_kriteria->name == 'Ftth'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var min = Math.min.apply(null, $('#test-1 td#Ftth').map(function() {return $(this).text();}).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = min / nilai * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Cpe'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var min = Math.min.apply(null, $('#test-1 td#Cpe').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = min / nilai * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Absensi'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var min = Math.min.apply(null, $('#test-1 td#Absensi').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = min / nilai * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Kjt'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var min = Math.min.apply(null, $('#test-1 td#Kjt').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = min / nilai * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }elseif($data_kriteria->name == 'Nilai Semester'){
-                                    // hitung normalisasi dengan javascript
-                                    echo "<script>
-                                        var nilai = $bobot->bobot;
-                                        var min = Math.min.apply(null, $('#test-1 td#NilaiSemester').map(function() {
-                                            return $(this).text();
-                                        }).get());
-
-                                        var nilai_kriteria = $data_kriteria->bobot;
-
-                                        var normalisasi = min / nilai * nilai_kriteria;
-
-                                        document.write('<td>' + normalisasi + '</td>');
-
-                                    </script>";
-                                    }
-                                    }
-
-
-                                    } else {
-
-                                    }
-                                    @endphp
-                                    @endforeach
-                                    @endforeach --}}
 
                                     <script>
 
@@ -766,6 +601,31 @@
 
         ]
     , });
+
+</script>
+
+<script>
+     var nama_mitra = $('#test-4 tbody tr').sort(function(a, b) {
+        return $('td', b).eq(1).text() - $('td', a).eq(1).text();
+    }).eq(0).find('td').eq(0).text();
+
+    var id_siswa = "{{ $siswa->id }}";
+
+
+    var token = "{{ csrf_token() }}";
+    $.ajax({
+        url: "/rekomendasi-siswa"
+        , type: "POST"
+        , data: {
+            nama_mitra: nama_mitra
+            , id_siswa: id_siswa    
+            , _token: token
+        }
+        , success: function(data) {
+            console.log(data);
+        }
+    });
+
 
 </script>
 

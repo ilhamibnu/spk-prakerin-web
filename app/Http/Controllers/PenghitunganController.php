@@ -28,4 +28,6 @@ class PenghitunganController extends Controller
             'siswa' => $siswa,
         ]);
     }
+
+    
 }
